@@ -58,7 +58,7 @@ export function generateDatePDF(details: DateDetails): string {
   y += 10;
   
   // Add Google Maps link
-  const mapsUrl = `https://www.google.com/maps/place/?q=place_id:${details.selectedPlace.place_id}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(details.selectedPlace.name || '')}&query_place_id=${details.selectedPlace.place_id}`;
   doc.setTextColor(0, 0, 255);
   doc.text("View on Google Maps", leftMargin + 30, y);
   doc.link(leftMargin + 30, y - 5, 100, 6, { url: mapsUrl });
